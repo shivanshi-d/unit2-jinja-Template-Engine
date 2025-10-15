@@ -1,10 +1,15 @@
-{% extends "base.html" %}
-{% block title %}
-Class Roster - Advanced Programming Statistics
-{% endblock title %}
-
-{% block content %}
-<h1>📉Class Statistics - Advanced Programming</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='roster.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='stats.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>📉Class Statistics - Advanced Programming</h1>
         {# Summary Statistics using filters #}
         <div class="stat-card">
             <h3>Enrollment Summary:</h3>
@@ -38,4 +43,7 @@ Class Roster - Advanced Programming Statistics
                 </p>
             </div>
         </div>
-{% endblock content%}
+        
+    </div>
+</body>
+</html>

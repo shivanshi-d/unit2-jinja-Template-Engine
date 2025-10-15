@@ -59,10 +59,10 @@ def statistics():
     students = read_roster()
     # Calculate statistics
     total = len(students)
-    seniors = [s for s in students if s['Grade'] == 12]
-    juniors = [s for s in students if s['Grade'] == 11]
-    sophomores = [s for s in students if s['Grade'] == 10]
-    freshmen = [s for s in students if s['Grade'] == 9]
+    seniors = [s for s in students if s['Grade'] == '12']
+    juniors = [s for s in students if s['Grade'] == '11']
+    sophomores = [s for s in students if s['Grade'] == '10']
+    freshmen = [s for s in students if s['Grade'] == '9']
     males = [s for s in students if s['Gender'] == 'M']
     females = [s for s in students if s['Gender'] == 'F']
     
@@ -78,5 +78,15 @@ def statistics():
     }
     return render_template('stats.html', **data)
 
+
+@app.route('/students/<int:student_id>')
+def student_detail(student_id):
+    """Show the details of a specific student"""
+    students = read_roster()
+    # find student by ID(ID is indexed in CSV)
+    if 1 <= student_id <= len(students):
+        student = students[student_id - 1]
+        return render_template('student_data.html', student=student)
+    
 if __name__ == '__main__':
     app.run(debug=True)
